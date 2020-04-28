@@ -338,12 +338,10 @@ class homeActivity : AppCompatActivity() {
 
     fun addViewToEditEducation() {
 
-        Log.v("Edit", "edit-1")
         edit_univ.visibility = View.INVISIBLE
         edit_univ_degree.visibility = View.INVISIBLE
         edit_univ_major.visibility = View.INVISIBLE
 
-        Log.v("Edit", "edit-2")
         // Edit university name
         val edit_university_name = EditText(this)
         edit_university_name.id = ViewCompat.generateViewId()
@@ -357,7 +355,6 @@ class homeActivity : AppCompatActivity() {
         edit_university_name.setPadding(20, 40, 20, 20)
         edit_edu_layout.addView(edit_university_name, layoutParams)
 
-        Log.v("Edit", "edit-3")
         //University Degree
         val edit_university_degree = EditText(this)
         edit_university_degree.id = ViewCompat.generateViewId()
@@ -372,7 +369,6 @@ class homeActivity : AppCompatActivity() {
         edit_edu_layout.addView(edit_university_degree, layoutParams5)
 
 
-        Log.v("Edit", "edit-4")
         //University Major
         val edit_university_major = EditText(this)
         edit_university_major.id = ViewCompat.generateViewId()
@@ -386,8 +382,6 @@ class homeActivity : AppCompatActivity() {
         edit_university_major.setPadding(20, 40, 20, 20)
         edit_edu_layout.addView(edit_university_major, layoutParams6)
 
-
-        Log.v("Edit", "edit-5")
         // Add save button
         val save_button = Button(this)
         save_button.id = ViewCompat.generateViewId()
@@ -401,7 +395,6 @@ class homeActivity : AppCompatActivity() {
         save_button.setPadding(20, 20, 20, 20)
         edit_edu_layout.addView(save_button, layoutParams4)
 
-        Log.v("Edit", "edit-6")
         // Add Cancel button
         val cancel_button = Button(this)
         cancel_button.setText(R.string.cancel_text)
@@ -555,17 +548,17 @@ class homeActivity : AppCompatActivity() {
         edit_proj_layout.addView(edit_proj_desc, layoutParams6)
 
         // Add save button
-        val save_button = Button(this)
-        save_button.id = ViewCompat.generateViewId()
-        save_button.setText(R.string.save_text)
-        val layoutParams4 = RelativeLayout.LayoutParams(
+        val save_project_button = Button(this)
+        save_project_button.id = ViewCompat.generateViewId()
+        save_project_button.setText(R.string.save_text)
+        val layoutParams7 = RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams4.addRule(RelativeLayout.BELOW, edit_proj_desc.id)
-        layoutParams4.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, edit_proj_desc.id)
-        save_button.setPadding(20, 20, 20, 20)
-        edit_proj_layout.addView(save_button, layoutParams4)
+        layoutParams7.addRule(RelativeLayout.BELOW, edit_proj_desc.id)
+        layoutParams7.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, edit_proj_desc.id)
+        save_project_button.setPadding(20, 20, 20, 20)
+        edit_proj_layout.addView(save_project_button, layoutParams7)
 
 
         // Add Cancel button
@@ -576,7 +569,7 @@ class homeActivity : AppCompatActivity() {
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParams3.addRule(RelativeLayout.BELOW, edit_proj_desc.id)
-        layoutParams3.addRule(RelativeLayout.START_OF, save_button.id)
+        layoutParams3.addRule(RelativeLayout.START_OF, save_project_button.id)
         cancel_button.setPadding(20, 20, 20, 20)
         edit_proj_layout.addView(cancel_button, layoutParams3)
 
@@ -584,7 +577,7 @@ class homeActivity : AppCompatActivity() {
             proj_name.visibility = View.VISIBLE
             proj_skills.visibility = View.VISIBLE
             proj_desc.visibility = View.VISIBLE
-            edit_proj_layout.removeView(save_button)
+            edit_proj_layout.removeView(save_project_button)
             edit_proj_layout.removeView(edit_proj_name)
             edit_proj_layout.removeView(cancel_button)
             edit_proj_layout.removeView(edit_proj_desc)
@@ -592,7 +585,7 @@ class homeActivity : AppCompatActivity() {
         }
 
         // SAVE the edited Username value in Firebase Database.
-        save_button.setOnClickListener {
+        save_project_button.setOnClickListener {
             var edited_proj_name = edit_proj_name.text.toString()
             var edited_proj_skills = edit_proj_skills.text.toString()
             var edited_proj_desc = edit_proj_desc.text.toString()
@@ -631,7 +624,7 @@ class homeActivity : AppCompatActivity() {
                         proj_skills.visibility = View.VISIBLE
                         proj_desc.visibility = View.VISIBLE
 
-                        edit_proj_layout.removeView(save_button)
+                        edit_proj_layout.removeView(save_project_button)
                         edit_proj_layout.removeView(edit_proj_name)
                         edit_proj_layout.removeView(cancel_button)
                         edit_proj_layout.removeView(edit_proj_desc)

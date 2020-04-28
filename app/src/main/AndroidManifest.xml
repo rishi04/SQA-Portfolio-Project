@@ -12,10 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".sendEmail"></activity>
-        <activity android:name=".display_list" />
+        <activity android:name=".sendEmail"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".display_list"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".portfolio"
+            android:screenOrientation="portrait"
             android:parentActivityName=".homeActivity" />
         <activity android:name=".search">
             <intent-filter>
@@ -24,10 +27,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".homeActivity" />
-        <activity android:name=".createAccount_Activity" />
+        <activity android:name=".homeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".createAccount_Activity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:parentActivityName=".search" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
