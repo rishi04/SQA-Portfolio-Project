@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "923549471277",
+    "firebase_url": "https://portfoliobank-56b13.firebaseio.com",
+    "project_id": "portfoliobank-56b13",
+    "storage_bucket": "portfoliobank-56b13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923549471277:android:94f16d896ab8b81e4c1ea4",
+        "android_client_info": {
+          "package_name": "com.example.portfoliobank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923549471277-jm48r82pfgne901a22kfvvg5keavmh73.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.portfoliobank",
+            "certificate_hash": "509447958cdb29fd4a5788b17071de3748fd4701"
+          }
+        },
+        {
+          "client_id": "923549471277-fndggdqqa0smlf130t24hr8nf6atblpr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnX4IFBd2RJ_i8o3xwmb0KWJZO9yOcGnM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923549471277-fndggdqqa0smlf130t24hr8nf6atblpr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

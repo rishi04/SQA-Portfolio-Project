@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">Portfolio Bank</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+
+    <string name="message">Message</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="email">Enter your email</string>
+    <string name="password">Enter your password</string>
+    <string name="password2">Re-enter your password</string>
+    <string name="create_account_location">Enter your location</string>
+    <string name="create_account">Create Account</string>
+    <string name="home">Home</string>
+    <string name="user_name">Username</string>
+    <string name="select_photo">SELECT PHOTO</string>
+    <string name="add_post">Write post</string>
+    <string name="user_post">Post</string>
+    <string name="post_it_button">Post it!</string>
+    <string name="post_text">Whats on your mind about books?</string>
+
+    <string name="user_email">Email</string>
+    <string name="user_password">Password</string>
+    <string name="user_first_name">First Name</string>
+    <string name="user_last_name">Last Name</string>
+    <string name="login">Login</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="password_reset_email">Send Password Reset Email</string>
+    <string name="show_password">Show Password</string>
+    <string name="hide_password">Hide Password</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="search_here">Search here..</string>
+    <string name="messages">\'s Messages</string>
+
+    <string name="edit"><u>Edit</u></string>
+    <string name="User_email">Email</string>
+    <string name="change_password"><u>Change Password</u></string>
+    <string name="save_text">Save</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="zero">0</string>
+
+    <string name="edu_details">Education details</string>
+    <string name="univ_name">University Name</string>
+    <string name="univ_degree">University Degree</string>
+    <string name="univ_major">University Major</string>
+    <string name="in">in</string>
+    <string name="univ_start_date">University start date</string>
+    <string name="univ_end_date">University end date</string>
+    <string name="enter_education"><i>Enter your education details</i></string>
+
+    <string name="proj_name">Project Name</string>
+    <string name="skills">Skills</string>
+    <string name="proj_desc">Project Description</string>
+    <string name="proj_details">Project Details</string>
+    <string name="dash">-</string>
+
+    <string name="view_port">View Portfolio</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="describe_yourself">Describe yourself</string>
+    <string name="retype_new_password">Retype New Password</string>
+
+
+    <string name="admin_login">Admin Login</string>
+    <string name="pin">Enter your pin</string>
+    <string name="admin_verify">Admin Login Verification</string>
+
+    <string name="search_name">Enter candidate\'s name</string>
+    <string name="search_state">Enter a state</string>
+    <string name="or">OR</string>
+    <string name="add">Add</string>
+    <string name="image">Image</string>
+    <string name="camera">Camera</string>
+    <string name="search_book"><i>Search any Book here</i></string>
+    <string name="no_internet">NO INTERNET</string>
+
+    <string name="click_search">Click here to search..</string>
+    <string name="send_message">Send Message</string>
+    <string name="title_activity_home">homeActivity</string>
+    <string name="about_myself">About Myself</string>
+    <string name="select_state">Select your state</string>
+    <string name="complete_portfolio">Complete Portfolio</string>
+
+    <string name="search_result">Your searched result appears below: </string>
+    <string name="send_email">Click to send an email</string>
+    <string name="recipient_email">Recipient\'s email</string>
+    <string name="subject">Subject</string>
+</resources>
