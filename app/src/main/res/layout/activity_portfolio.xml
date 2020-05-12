@@ -51,7 +51,7 @@
                     android:text="@string/user_name"
                     android:textAllCaps="true"
                     android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView

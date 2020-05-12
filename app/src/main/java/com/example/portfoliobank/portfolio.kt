@@ -62,7 +62,7 @@ class portfolio : AppCompatActivity() {
         }
 
         userType = intent?.getStringExtra("Admin").toString()
-        if (userType.equals("Admin")) {
+        if (userType.equals("Admin") || userType.equals("User")) {
             delete_button.visibility = View.VISIBLE
         } else {
             delete_button.visibility = View.GONE

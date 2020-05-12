@@ -383,17 +383,17 @@ class homeActivity : AppCompatActivity() {
         edit_edu_layout.addView(edit_university_major, layoutParams6)
 
         // Add save button
-        val save_button = Button(this)
-        save_button.id = ViewCompat.generateViewId()
-        save_button.setText(R.string.save_text)
+        val save_univ_button = Button(this)
+        save_univ_button.id = ViewCompat.generateViewId()
+        save_univ_button.setText(R.string.save_text)
         val layoutParams4 = RelativeLayout.LayoutParams(
             RelativeLayout.LayoutParams.WRAP_CONTENT,
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParams4.addRule(RelativeLayout.BELOW, edit_univ_end_date.id)
         layoutParams4.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, edit_univ_end_date.id)
-        save_button.setPadding(20, 20, 20, 20)
-        edit_edu_layout.addView(save_button, layoutParams4)
+        save_univ_button.setPadding(20, 20, 20, 20)
+        edit_edu_layout.addView(save_univ_button, layoutParams4)
 
         // Add Cancel button
         val cancel_button = Button(this)
@@ -403,7 +403,7 @@ class homeActivity : AppCompatActivity() {
             RelativeLayout.LayoutParams.WRAP_CONTENT
         )
         layoutParams3.addRule(RelativeLayout.BELOW, edit_univ_end_date.id)
-        layoutParams3.addRule(RelativeLayout.START_OF, save_button.id)
+        layoutParams3.addRule(RelativeLayout.START_OF, save_univ_button.id)
         cancel_button.setPadding(20, 20, 20, 20)
         edit_edu_layout.addView(cancel_button, layoutParams3)
 
@@ -411,7 +411,7 @@ class homeActivity : AppCompatActivity() {
             edit_univ.visibility = View.VISIBLE
             edit_univ_major.visibility = View.VISIBLE
             edit_univ_degree.visibility = View.VISIBLE
-            edit_edu_layout.removeView(save_button)
+            edit_edu_layout.removeView(save_univ_button)
             edit_edu_layout.removeView(edit_university_name)
             edit_edu_layout.removeView(cancel_button)
             edit_edu_layout.removeView(edit_university_degree)
@@ -437,8 +437,8 @@ class homeActivity : AppCompatActivity() {
         }
 
 
-        // SAVE the edited Username value in Firebase Database.
-        save_button.setOnClickListener {
+        // SAVE the edited University values in Firebase Database.
+        save_univ_button.setOnClickListener {
             var edited_univ_name = edit_university_name.text.toString()
             val edited_start_date = edit_univ_start_date.text.toString()
             val edited_end_date = edit_univ_end_date.text.toString()
@@ -446,10 +446,11 @@ class homeActivity : AppCompatActivity() {
             var edited_major = edit_university_major.text.toString()
 
 
-            if (edited_start_date.compareTo(edited_end_date) > 0) {
+            /*if (edited_start_date.compareTo(edited_end_date) > 0) {
                 Toast.makeText(this, "Start date must be less than end date", Toast.LENGTH_SHORT)
                     .show()
-            } else if (TextUtils.isEmpty(univ_name) && TextUtils.isEmpty(edited_univ_name)) {
+            } else*/
+            if (TextUtils.isEmpty(univ_name) && TextUtils.isEmpty(edited_univ_name)) {
                 Toast.makeText(this, "University name cannot be blank", Toast.LENGTH_SHORT).show()
             } else if (TextUtils.isEmpty(univ_deg) && TextUtils.isEmpty(edited_deg)) {
                 Toast.makeText(this, "Degree name cannot be blank", Toast.LENGTH_SHORT).show()
@@ -469,9 +470,9 @@ class homeActivity : AppCompatActivity() {
                     edited_major = univ_major
                 }
 
-                edit_university_name.setText(edited_univ_name)
+                /*edit_univ.setText(edited_univ_name)
                 edit_univ_degree.setText(edited_deg)
-                edit_univ_major.setText(edited_major)
+                edit_univ_major.setText(edited_major)*/
 
                 val userinfo_updates_hashMap = HashMap<String, Any>()
                 userinfo_updates_hashMap.put("univ_name", edited_univ_name)
@@ -483,9 +484,13 @@ class homeActivity : AppCompatActivity() {
                     .addOnSuccessListener {
                         edit_univ.setText(edited_univ_name)
                         edit_univ.visibility = View.VISIBLE
+                        edit_univ_degree.setText(edited_deg)
                         edit_univ_degree.visibility = View.VISIBLE
+                        edit_univ_major.setText(edited_major)
                         edit_univ_major.visibility = View.VISIBLE
-                        edit_edu_layout.removeView(save_button)
+                        edit_univ_start_date.setText(edited_start_date)
+                        edit_univ_end_date.setText(edited_end_date)
+                        edit_edu_layout.removeView(save_univ_button)
                         edit_edu_layout.removeView(edit_university_name)
                         edit_edu_layout.removeView(cancel_button)
                         edit_edu_layout.removeView(edit_university_degree)

@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/sender"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/recipient_email"
-        android:autofillHints="@string/recipient_email"
-        tools:targetApi="o"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="@string/recipient_email"
+        android:hint="@string/recipient_email"
+        android:inputType="textEmailAddress"
+        tools:targetApi="o">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/sender_email"
-        android:layout_width="match_parent"
-        android:ems="10"
-        android:layout_height="wrap_content" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sender_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/subject"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/subject"
-        android:autofillHints="@string/subject"
-        tools:targetApi="o"
-        android:inputType="text"
-        android:layout_marginTop="30dp"
         android:layout_below="@id/sender"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="@string/subject"
+        android:hint="@string/subject"
+        android:inputType="text"
+        tools:targetApi="o">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/subject_id"
             android:layout_width="match_parent"
-            android:ems="10"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="10" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/body"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/message"
-        android:autofillHints="@string/message"
-        tools:targetApi="o"
-        android:inputType="textLongMessage"
         android:layout_below="@id/subject"
-        android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:autofillHints="@string/message"
+        android:hint="@string/message"
+        android:inputType="textLongMessage"
+        tools:targetApi="o">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/body_msg"
             android:layout_width="match_parent"
-            android:ems="10"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="10" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <Button
+        android:id="@+id/send_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/send_button"
         android:layout_below="@id/body"
-        android:text="@string/send_message"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:background="@color/colorBlue"
-        android:layout_marginTop="50dp"/>
+        android:text="@string/send_message" />
 
 </RelativeLayout>

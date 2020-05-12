@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -25,6 +26,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_display_list.*
+import kotlinx.android.synthetic.main.activity_display_list.search_can_name
 import kotlinx.android.synthetic.main.create_account.spinner_state
 
 
@@ -38,7 +40,7 @@ class display_list : AppCompatActivity() {
     private lateinit var mUserStorageRefs: StorageReference
     private var name: String? = null
     private var userType: String? = null
-
+    var searchQuery: Query? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,11 +58,29 @@ class display_list : AppCompatActivity() {
 
         search_results.visibility = View.GONE
 
-        userType = intent?.getStringExtra("Admin").toString()
+       userType = intent?.getStringExtra("Admin").toString()
         if (userType.equals("Admin")) {
-            fetchData()
-        }
+            searchQuery = mUsersDbRef.orderByChild("timestamp").limitToLast(2)
+            fetchData(searchQuery!!)
+        } else {
 
+            name = intent?.getStringExtra("name").toString()
+            stateSelected = intent?.getStringExtra("state").toString()
+            Log.v("XXX", "name-length:" + name?.length)
+            Log.v("XXX", "state-length:" + stateSelected?.length)
+            if (name!!.length > 4) {
+                Log.v("XXX", "name-start: " + name)
+                search_results.visibility = View.VISIBLE
+                searchQuery =
+                    mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
+                fetchData(searchQuery!!)
+            } else if (stateSelected != null) {
+                Log.v("XXX", "state-start: " + stateSelected)
+                searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
+                    .endAt(stateSelected + "uf8ff")
+                fetchData(searchQuery!!)
+            }
+        }
         result_list.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(this)
         val decoration = DividerItemDecoration(
@@ -74,8 +94,17 @@ class display_list : AppCompatActivity() {
         query_button.setOnClickListener {
             search_results.visibility = View.VISIBLE
             name = search_can_name.text.toString()
-            if (!TextUtils.isEmpty(name) || stateSelected != null) {
-                fetchData()
+            if (!name.isNullOrEmpty()) {
+                Log.v("XXX", "name-query: " + name)
+                search_results.visibility = View.VISIBLE
+                searchQuery =
+                    mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
+                fetchData(searchQuery!!)
+            } else if (stateSelected != null) {
+                Log.v("XXX", "state-query: " + stateSelected)
+                searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
+                    .endAt(stateSelected + "uf8ff")
+                fetchData(searchQuery!!)
             } else {
                 Snackbar.make(it, "Please select either a name or state", Snackbar.LENGTH_LONG)
                     .show()
@@ -83,20 +112,26 @@ class display_list : AppCompatActivity() {
         }
     }
 
-    private fun fetchData() {
-        var searchQuery: Query? = null
+    private fun fetchData(searchQuery: Query) {
 
-        if (stateSelected != null) {
-            searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
-                .endAt(stateSelected + "uf8ff")
-        } else if (!TextUtils.isEmpty(name)) {
-            searchQuery = mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
-        } else if ((userType.equals("Admin")) && stateSelected == null && TextUtils.isEmpty(name)) {
-            searchQuery = mUsersDbRef.orderByChild("timestamp").limitToLast(2)
-        }
+        Log.v("XXXX", "name-fetch: " + name)
+        Log.v("XXXX", "state-fetch: " + stateSelected)
+        /* if (!TextUtils.isEmpty(name) || !name.isNullOrEmpty()) {
+             searchQuery = mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
+         }
+
+         else if (stateSelected != null) {
+             searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
+                 .endAt(stateSelected + "uf8ff")
+         }
+
+         else if ((userType.equals("Admin")) && stateSelected == null && TextUtils.isEmpty(name)) {
+             searchQuery = mUsersDbRef.orderByChild("timestamp").limitToLast(5)
+         }
+             */
 
         val option = FirebaseRecyclerOptions.Builder<Users>()
-            .setQuery(searchQuery!!, Users::class.java)
+            .setQuery(searchQuery, Users::class.java)
             .setLifecycleOwner(this)
             .build()
 
