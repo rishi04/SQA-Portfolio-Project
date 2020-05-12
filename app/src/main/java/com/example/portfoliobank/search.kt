@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,7 +22,7 @@ import kotlinx.android.synthetic.main.create_account.spinner_state
 
 class search : AppCompatActivity() {
 
-    private var stateSelected:String? = null
+    private var stateSelected: String? = null
     private var name: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,15 +33,14 @@ class search : AppCompatActivity() {
         setSpinner()
         search_button.setOnClickListener {
             name = search_can_name.text.toString()
-            Log.v("XXXX ", "name: " +name)
 
             val searchIntent = Intent(this, display_list::class.java)
 
             if (!TextUtils.isEmpty(name) || !name.isNullOrEmpty()) {
-                searchIntent.putExtra("name",name)
+                searchIntent.putExtra("name", name)
                 startActivity(searchIntent)
             } else if (stateSelected != null) {
-                searchIntent.putExtra("state",stateSelected)
+                searchIntent.putExtra("state", stateSelected)
                 startActivity(searchIntent)
             } else {
                 Snackbar.make(it, "Please select either a name or state", Snackbar.LENGTH_LONG)

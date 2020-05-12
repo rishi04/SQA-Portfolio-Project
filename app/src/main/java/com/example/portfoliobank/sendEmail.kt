@@ -5,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
@@ -36,7 +35,7 @@ class sendEmail : AppCompatActivity() {
         UID = intent?.getStringExtra("UID").toString()
         recipient_email = intent?.getStringExtra("recipient_email").toString()
 
-        if( (recipient_email.isNotBlank() || !recipient_email.isEmpty()) && recipient_email.length > 4 ){
+        if ((recipient_email.isNotBlank() || !recipient_email.isEmpty()) && recipient_email.length > 4) {
             sender_email.setText(recipient_email)
         }
 
@@ -47,12 +46,12 @@ class sendEmail : AppCompatActivity() {
             msgIntent.type = "text/plain"
             msgIntent.putExtra(Intent.EXTRA_EMAIL, recipient_email)
             msgIntent.putExtra(Intent.EXTRA_SUBJECT, subject_id.text.toString())
-            msgIntent.putExtra(Intent.EXTRA_TEXT,body_msg.text.toString())
+            msgIntent.putExtra(Intent.EXTRA_TEXT, body_msg.text.toString())
 
-            try{
-                startActivity(Intent.createChooser(msgIntent,"Choose any Email service"))
-            } catch (e:Exception){
-                Snackbar.make(it, e.message.toString(),Snackbar.LENGTH_LONG).show()
+            try {
+                startActivity(Intent.createChooser(msgIntent, "Choose any Email service"))
+            } catch (e: Exception) {
+                Snackbar.make(it, e.message.toString(), Snackbar.LENGTH_LONG).show()
             }
 
         }
@@ -64,12 +63,11 @@ class sendEmail : AppCompatActivity() {
         }
     }
 
-   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        Log.v("XXX","curr: " +currentUserID)
-        if(currentUserID.isNullOrEmpty() || currentUserID.toString().isBlank()){
+        if (currentUserID.isNullOrEmpty() || currentUserID.toString().isBlank()) {
             inflater.inflate(R.menu.login_menu, menu)
-        }else{
+        } else {
             inflater.inflate(R.menu.logout_menu, menu)
         }
 
@@ -78,8 +76,8 @@ class sendEmail : AppCompatActivity() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            android.R.id.home ->{
+        when (item.itemId) {
+            android.R.id.home -> {
                 val profileIntent = Intent(this, portfolio::class.java)
                 profileIntent.putExtra("UID", UID)
                 startActivity(profileIntent)

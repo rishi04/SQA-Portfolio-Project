@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
@@ -65,7 +64,6 @@ class MainActivity : AppCompatActivity() {
 
         admin_verify_login_button.setOnClickListener {
             val admin_pin = login_pin.text.toString()
-            Log.v("ADMIN", admin_pin)
             if (admin_pin.equals("Admin@1230")) {
                 userType = "Admin"
                 loginWithEmailandPassword()
@@ -89,11 +87,9 @@ class MainActivity : AppCompatActivity() {
         val email = login_email?.text.toString()
         val password = login_password?.text.toString()
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-            Log.d(TAG, "Logging in user.")
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Log.d(TAG, "signInWithEmail:success")
                         if (userType == "Admin") {
                             val displayIntent = Intent(this, display_list::class.java)
                             displayIntent.putExtra("Admin", userType)
@@ -103,7 +99,6 @@ class MainActivity : AppCompatActivity() {
                             startActivity(Intent(this, homeActivity::class.java))
                         }
                     } else {
-                        Log.e(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
                             this, "Authentication failed.",
                             Toast.LENGTH_SHORT

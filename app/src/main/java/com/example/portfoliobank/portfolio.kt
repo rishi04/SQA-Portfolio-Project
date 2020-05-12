@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -13,10 +12,6 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_home.proj_desc
-import kotlinx.android.synthetic.main.activity_home.proj_name
-import kotlinx.android.synthetic.main.activity_home.proj_skills
 import kotlinx.android.synthetic.main.activity_portfolio.*
 
 class portfolio : AppCompatActivity() {

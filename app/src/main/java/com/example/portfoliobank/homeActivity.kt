@@ -207,7 +207,6 @@ class homeActivity : AppCompatActivity() {
 
     fun uploadProfileImagetoFirebase(resultUri: Uri?) {
         if (resultUri == null) {
-            Log.v(TAG, "post_it_image")
             val snackbar = Snackbar
                 .make(relative_layout_head, "Please select an image", Snackbar.LENGTH_LONG)
                 .setAction("OK", object : View.OnClickListener {
@@ -219,7 +218,6 @@ class homeActivity : AppCompatActivity() {
             val filePath: StorageReference =
                 mUserStorageRefs.child(UUID.randomUUID().toString() + ".jpg")
             filePath.putFile(ImageUri!!).addOnSuccessListener {
-                Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
                 filePath.downloadUrl.addOnSuccessListener {
                     mUsersDbRef.child("ProfileImage").setValue(it.toString())
                 }
@@ -445,11 +443,6 @@ class homeActivity : AppCompatActivity() {
             var edited_deg = edit_university_degree.text.toString()
             var edited_major = edit_university_major.text.toString()
 
-
-            /*if (edited_start_date.compareTo(edited_end_date) > 0) {
-                Toast.makeText(this, "Start date must be less than end date", Toast.LENGTH_SHORT)
-                    .show()
-            } else*/
             if (TextUtils.isEmpty(univ_name) && TextUtils.isEmpty(edited_univ_name)) {
                 Toast.makeText(this, "University name cannot be blank", Toast.LENGTH_SHORT).show()
             } else if (TextUtils.isEmpty(univ_deg) && TextUtils.isEmpty(edited_deg)) {
@@ -458,7 +451,6 @@ class homeActivity : AppCompatActivity() {
                 Toast.makeText(this, "Major cannot be blank", Toast.LENGTH_SHORT).show()
             } else {
                 if (TextUtils.isEmpty(edited_univ_name)) {
-                    Log.v("Home-3", "hi")
                     edited_univ_name = univ_name
                 }
 
@@ -470,9 +462,6 @@ class homeActivity : AppCompatActivity() {
                     edited_major = univ_major
                 }
 
-                /*edit_univ.setText(edited_univ_name)
-                edit_univ_degree.setText(edited_deg)
-                edit_univ_major.setText(edited_major)*/
 
                 val userinfo_updates_hashMap = HashMap<String, Any>()
                 userinfo_updates_hashMap.put("univ_name", edited_univ_name)

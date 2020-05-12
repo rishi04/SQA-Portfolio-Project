@@ -6,8 +6,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -58,7 +56,7 @@ class display_list : AppCompatActivity() {
 
         search_results.visibility = View.GONE
 
-       userType = intent?.getStringExtra("Admin").toString()
+        userType = intent?.getStringExtra("Admin").toString()
         if (userType.equals("Admin")) {
             searchQuery = mUsersDbRef.orderByChild("timestamp").limitToLast(2)
             fetchData(searchQuery!!)
@@ -66,16 +64,12 @@ class display_list : AppCompatActivity() {
 
             name = intent?.getStringExtra("name").toString()
             stateSelected = intent?.getStringExtra("state").toString()
-            Log.v("XXX", "name-length:" + name?.length)
-            Log.v("XXX", "state-length:" + stateSelected?.length)
             if (name!!.length > 4) {
-                Log.v("XXX", "name-start: " + name)
                 search_results.visibility = View.VISIBLE
                 searchQuery =
                     mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
                 fetchData(searchQuery!!)
             } else if (stateSelected != null) {
-                Log.v("XXX", "state-start: " + stateSelected)
                 searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
                     .endAt(stateSelected + "uf8ff")
                 fetchData(searchQuery!!)
@@ -95,13 +89,11 @@ class display_list : AppCompatActivity() {
             search_results.visibility = View.VISIBLE
             name = search_can_name.text.toString()
             if (!name.isNullOrEmpty()) {
-                Log.v("XXX", "name-query: " + name)
                 search_results.visibility = View.VISIBLE
                 searchQuery =
                     mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
                 fetchData(searchQuery!!)
             } else if (stateSelected != null) {
-                Log.v("XXX", "state-query: " + stateSelected)
                 searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
                     .endAt(stateSelected + "uf8ff")
                 fetchData(searchQuery!!)
@@ -113,23 +105,6 @@ class display_list : AppCompatActivity() {
     }
 
     private fun fetchData(searchQuery: Query) {
-
-        Log.v("XXXX", "name-fetch: " + name)
-        Log.v("XXXX", "state-fetch: " + stateSelected)
-        /* if (!TextUtils.isEmpty(name) || !name.isNullOrEmpty()) {
-             searchQuery = mUsersDbRef.orderByChild("firstName").startAt(name).endAt(name + "uf8ff")
-         }
-
-         else if (stateSelected != null) {
-             searchQuery = mUsersDbRef.orderByChild("state").startAt(stateSelected)
-                 .endAt(stateSelected + "uf8ff")
-         }
-
-         else if ((userType.equals("Admin")) && stateSelected == null && TextUtils.isEmpty(name)) {
-             searchQuery = mUsersDbRef.orderByChild("timestamp").limitToLast(5)
-         }
-             */
-
         val option = FirebaseRecyclerOptions.Builder<Users>()
             .setQuery(searchQuery, Users::class.java)
             .setLifecycleOwner(this)
